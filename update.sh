@@ -1,9 +1,9 @@
 if [[ $1 == "upload" ]]; then
-	sudo git add -A
+	git add -A
 	echo "Input commit content."
 	read commit
-	sudo git commit -m "$commit"
-	sudo proxychains -q git push -u origin master
+	git commit -m "$commit"
+	proxychains -q git push -u origin master
 else
 	echo "check https://devmanual.gentoo.org/quickstart/index.html for tips to write ebuild"
 	echo "1. update swayimg."
