@@ -4,7 +4,7 @@ function check() {
 	echo "----------------------------------------------------------------------------"
 }
 
-echo "check https://devmanual.gentoo.org/quickstart/index.html for tips to write ebuild"
+echo -e "check https://devmanual.gentoo.org/quickstart/index.html for tips to write ebuild.\n"
 
 check "https://dbeaver.io/download" dbeaver
 check "https://github.com/milgra/sov/releases" sov
