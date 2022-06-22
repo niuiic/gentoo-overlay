@@ -1,14 +1,12 @@
-if [[ $1 == "upload" ]]; then
-	git add -A
-	echo "Input commit content."
-	read commit
-	git commit -m "$commit"
-	proxychains -q git push -u origin master
-else
-	echo "check https://devmanual.gentoo.org/quickstart/index.html for tips to write ebuild"
-	echo "1. update swayimg."
-	echo "2. check the latest version of dbeaver on https://dbeaver.io/download/?start&os=linux&arch=x86_64&dist=rpm"
-	echo "3. Check the latest release version of sov on https://github.com/milgra/sov/releases."
-	echo "4. Check the latest release version of swayimg on https://github.com/artemsen/swayimg/releases."
-	echo "5. Check the latest release version of proxychains on https://github.com/rofl0r/proxychains-ng/releases."
-fi
+function check() {
+	xdg-open $1
+	fd $2
+	echo "----------------------------------------------------------------------------"
+}
+
+echo "check https://devmanual.gentoo.org/quickstart/index.html for tips to write ebuild"
+
+check "https://dbeaver.io/download" dbeaver
+check "https://github.com/milgra/sov/releases" sov
+check "https://github.com/artemsen/swayimg/releases" swayimg
+check "https://github.com/rofl0r/proxychains-ng/releases" proxychains
