@@ -3,11 +3,11 @@
 
 EAPI=8
 
-VERSION="v0.0-2152-gdd5e91a4"
+VERSION="v0.0-2162-g80b07f9c"
 
 DESCRIPTION="A suite of SystemVerilog developer tools, including a parser, style-linter, and formatter."
 HOMEPAGE="https://github.com/chipsalliance/verible"
-SRC_URI="https://github.com/chipsalliance/verible/releases/download/v0.0-2152-gdd5e91a4/verible-$VERSION-Ubuntu-20.04-focal-x86_64.tar.gz"
+SRC_URI="https://github.com/chipsalliance/verible/releases/download/$VERSION/verible-$VERSION-Ubuntu-20.04-focal-x86_64.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
