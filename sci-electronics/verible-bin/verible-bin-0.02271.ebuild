@@ -3,7 +3,7 @@
 
 EAPI=8
 
-VERSION="v0.0-2180-g13938b49"
+VERSION="v0.0-2271-g694974a6"
 
 DESCRIPTION="A suite of SystemVerilog developer tools, including a parser, style-linter, and formatter."
 HOMEPAGE="https://github.com/chipsalliance/verible"
