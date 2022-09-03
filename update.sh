@@ -11,3 +11,4 @@ check "https://github.com/milgra/sov/releases" sov
 check "https://github.com/artemsen/swayimg/releases" swayimg
 check "https://github.com/rofl0r/proxychains-ng/releases" proxychains
 check "https://github.com/chipsalliance/verible/releases" verible-bin
+check "https://github.com/keshavbhatt/ColorPicker/releases" color-picker
