@@ -67,10 +67,10 @@ BDEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}/10.1.0-Werror.patch"
-	"${FILESDIR}/11.3.5-icu.patch"
-)
+# PATCHES=(
+# 	"${FILESDIR}/10.1.0-Werror.patch"
+# 	"${FILESDIR}/11.3.5-icu.patch"
+# )
 
 pkg_setup() {
 	local CONFIG_CHECK="~VMWARE_BALLOON ~VMWARE_PVSCSI ~VMXNET3"
@@ -82,7 +82,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply -p2 "${PATCHES[@]}"
+	# eapply -p2 "${PATCHES[@]}"
 	eapply_user
 	eautoreconf
 }
