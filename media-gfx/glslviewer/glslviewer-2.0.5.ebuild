@@ -15,7 +15,6 @@ EGIT_SUBMODULES=("*")
 LICENSE="BSD3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="wayland"
 
 DEPEND="
 	sys-libs/ncurses
@@ -23,18 +22,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-src_configure() {
-	if use wayland; then
-		cmake -DNO_X11=TRUE
-	else
-		cmake
-	fi
-}
-
 src_install() {
-	if use wayland; then
-		dobin "${S}/glslViewer"
-	else
-		dobin "${S}/build/glslViewer"
-	fi
+	dobin "${S}/build/glslViewer"
 }
