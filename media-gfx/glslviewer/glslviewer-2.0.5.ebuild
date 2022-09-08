@@ -30,11 +30,3 @@ src_configure() {
 		cmake
 	fi
 }
-
-src_install() {
-	if use wayland; then
-		dobin "${S}/glslViewer"
-	else
-		dobin "${S}/build/glslViewer"
-	fi
-}
