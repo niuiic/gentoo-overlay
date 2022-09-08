@@ -32,5 +32,9 @@ src_configure() {
 }
 
 src_install() {
-	dobin "${S}/build/glslViewer"
+	if use wayland; then
+		dobin "${S}/glslViewer"
+	else
+		dobin "${S}/build/glslViewer"
+	fi
 }
