@@ -15,7 +15,7 @@ EGIT_SUBMODULES=("*")
 LICENSE="BSD3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+X wayland"
+IUSE="wayland"
 
 DEPEND="
 	sys-libs/ncurses
@@ -24,10 +24,10 @@ RDEPEND="${DEPEND}"
 BDEPEND=""
 
 src_configure() {
-	if use X; then
-		cmake
-	else
+	if use wayland; then
 		cmake -DNO_X11=TRUE
+	else
+		cmake
 	fi
 }
 
