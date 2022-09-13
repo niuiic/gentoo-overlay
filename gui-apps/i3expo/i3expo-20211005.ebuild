@@ -29,9 +29,10 @@ src_configure() {
 }
 
 src_install() {
-	exeinto /usr/bin
+	exeinto /home/niuiic/.local/bin
 	doexe i3expod.py
 	doexe prtscn.so
-	mkdir $HOME/.config/i3expo
-	cp defaultconfig $HOME/.config/i3expo/config
+	cp defaultconfig config
+	insinto /home/niuiic/.config/i3expo
+	doins config
 }
