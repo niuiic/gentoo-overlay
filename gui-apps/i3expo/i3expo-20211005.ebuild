@@ -27,3 +27,9 @@ DEPEND="
 src_configure() {
 	sed -i '21d' Makefile
 }
+
+src_install() {
+	exeinto /usr/bin
+	doexe i3expod.py
+	doexe prtscn.so
+}
