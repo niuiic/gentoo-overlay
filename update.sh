@@ -17,4 +17,3 @@ check "https://github.com/patriciogonzalezvivo/glslViewer/releases" glslviewer
 # i3expo and its dependency packages
 check "https://github.com/morrolinux/i3expo-ng" i3expo
 check "https://github.com/altdesktop/i3ipc-python/releases" i3ipc
-check "https://github.com/srstevenson/xdg/releases" xdg

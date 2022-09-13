@@ -21,7 +21,6 @@ DEPEND="
     dev-python/pygame
     dev-python/i3ipc
     dev-python/pillow
-    dev-python/xdg
     dev-python/pyxdg
 "
 
