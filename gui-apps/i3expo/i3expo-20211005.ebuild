@@ -32,4 +32,6 @@ src_install() {
 	exeinto /usr/bin
 	doexe i3expod.py
 	doexe prtscn.so
+	mkdir $HOME/.config/i3expo
+	cp defaultconfig $HOME/.config/i3expo/config
 }
