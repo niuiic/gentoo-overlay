@@ -22,17 +22,21 @@ DEPEND="
     dev-python/i3ipc
     dev-python/pillow
     dev-python/pyxdg
+    dev-python/python-xlib
 "
 
-src_configure() {
-	sed -i '21d' Makefile
-}
-
 src_install() {
-	exeinto /home/niuiic/.local/bin
+	# user=$(ls /home)
+	# exeinto /home/$user/.local/bin
+	# doexe i3expod.py
+	# doexe prtscn.so
+	# cp defaultconfig config
+	# insinto /home/$user/.config/i3expo
+	# doins config
+	exeinto /usr/local/bin
 	doexe i3expod.py
 	doexe prtscn.so
 	cp defaultconfig config
-	insinto /home/niuiic/.config/i3expo
+	insinto /etc/i3expo
 	doins config
 }
