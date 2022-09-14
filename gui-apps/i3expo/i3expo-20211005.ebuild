@@ -26,13 +26,7 @@ DEPEND="
 "
 
 src_install() {
-	# user=$(ls /home)
-	# exeinto /home/$user/.local/bin
-	# doexe i3expod.py
-	# doexe prtscn.so
-	# cp defaultconfig config
-	# insinto /home/$user/.config/i3expo
-	# doins config
+	sed -i '187s/xdg_config_home/"\/etc"/' i3expod.py
 	exeinto /usr/local/bin
 	doexe i3expod.py
 	doexe prtscn.so
