@@ -12,10 +12,10 @@ EGIT_REPO_URI="https://github.com/svenstaro/glsl-language-server"
 EGIT_COMMIT="${PV}"
 EGIT_SUBMODULES=("*")
 
-LICENSE="BSD3"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
 src_install() {
-	DESTDIR="${D}" ninja -C${S}/build install
+	DESTDIR="${D}" ninja -C"${S}"/build install
 }
