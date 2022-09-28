@@ -1,3 +1,5 @@
+# use pkgdev and pkgcheck instead of repoman
+
 function check() {
 	xdg-open $1
 	fd $2
