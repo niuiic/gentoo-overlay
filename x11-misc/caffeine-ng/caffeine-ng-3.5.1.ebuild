@@ -30,6 +30,7 @@ RDEPEND="
 	dev-python/pulsectl[${PYTHON_USEDEP}]
 	>=dev-python/setproctitle-1.1.10[${PYTHON_USEDEP}]
 	dev-libs/libappindicator:3
+	x11-libs/libnotify
 "
 
 src_prepare() {
