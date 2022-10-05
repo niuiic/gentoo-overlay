@@ -20,14 +20,6 @@ DEPEND="
 	sys-libs/ncurses
 	media-video/ffmpeg
 	media-libs/glu
-	x11-libs/libXdamage
-	x11-libs/libXi
-	x11-libs/libXxf86vm
-	x11-libs/libXrandr
-	x11-libs/libXinerama
-	x11-libs/libXcursor
-	sys-libs/ncurses-compat
-	dev-libs/libatomic_ops
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
