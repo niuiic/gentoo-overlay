@@ -19,8 +19,7 @@ KEYWORDS="~amd64"
 DEPEND="
 	sys-libs/ncurses
 	media-video/ffmpeg
-	media-libs/glu
-	media-libs/glfw
+	media-libs/glu[ada]
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
