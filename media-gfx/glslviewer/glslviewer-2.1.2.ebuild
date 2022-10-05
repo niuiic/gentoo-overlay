@@ -20,6 +20,7 @@ DEPEND="
 	sys-libs/ncurses
 	media-video/ffmpeg
 	media-libs/glu
+	media-libs/glfw
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
