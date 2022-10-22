@@ -18,11 +18,17 @@ KEYWORDS="~amd64"
 
 DEPEND="
 	sys-libs/ncurses
+	sys-libs/ncurses-compat
 	media-libs/glu
 	media-video/ffmpeg
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+src_configure() {
+	sed '26 aadd_compile_options(-ltinfo)' -i CMakeLists.txt
+	default
+}
 
 src_install() {
 	dobin "${S}/build/glslViewer"
