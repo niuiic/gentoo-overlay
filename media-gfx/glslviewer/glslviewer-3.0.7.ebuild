@@ -18,12 +18,17 @@ KEYWORDS="~amd64"
 
 DEPEND="
 	sys-libs/ncurses
-	sys-libs/ncurses-compat
 	media-video/ffmpeg
 	media-libs/glu
 "
-RDEPEND="${DEPEND}"
-BDEPEND=""
+
+src_configure() {
+	sed -i '93a\    set(CURSES_NEED_NCURSES TRUE)' CMakeLists.txt
+	sed -i 's/find_package(Curses)/find_package(Curses REQUIRED)/g' CMakeLists.txt
+	sed -i 's/CURSES_INCLUDE_DIR/CURSES_INCLUDE_DIRS/g' CMakeLists.txt
+	sed -i 's/CURSES_LIBRARY/CURSES_LIBRARIES/g' CMakeLists.txt
+	default
+}
 
 src_install() {
 	dobin "${S}/build/glslViewer"
