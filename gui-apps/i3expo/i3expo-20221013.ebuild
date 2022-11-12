@@ -25,8 +25,16 @@ DEPEND="
     dev-python/python-xlib
 "
 
+src_configure() {
+	rm Makefile
+	rm setup.py
+	# use `pkg-config --list-all | grep ^python` to search python library
+	gcc -shared -O3 -Wall -fPIC -Wl,-soname,prtscn $(pkg-config --cflags --libs python-3.11) -o prtscn.so prtscn.c -lX11 -I /usr/include/python3.11
+	default
+}
+
 src_install() {
-	sed -i '187s/xdg_config_home/"\/etc"/' i3expod.py
+	sed -i 's/str(xdg_config_home())/"\/etc"/g' i3expod.py
 	exeinto /usr/local/bin
 	doexe i3expod.py
 	doexe prtscn.so
