@@ -34,6 +34,7 @@ src_configure() {
 }
 
 src_install() {
+	sed -i '1s/python3/python3.10/g' i3expod.py
 	sed -i 's/str(xdg_config_home())/"\/etc"/g' i3expod.py
 	exeinto /usr/local/bin
 	doexe i3expod.py
