@@ -29,7 +29,7 @@ src_configure() {
 	rm Makefile
 	rm setup.py
 	# use `pkg-config --list-all | grep ^python` to search python library
-	gcc -shared -O3 -Wall -fPIC -Wl,-soname,prtscn $(pkg-config --cflags --libs python-3.10) -o prtscn.so prtscn.c -lX11 -I /usr/include/python3.10
+	gcc -shared -O3 -Wall -fPIC -Wl,-soname,prtscn $(pkg-config --cflags --libs python-3.11) -o prtscn.so prtscn.c -lX11 -I /usr/include/python3.11
 	default
 }
 
