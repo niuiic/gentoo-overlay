@@ -19,11 +19,6 @@ PDEPEND=""
 RESTRICT="mirror"
 S="${WORKDIR}/vmware-host-modules-w${PV}"
 
-# src_unpack() {
-# 	default
-# 	mv "${WORKDIR}"/vmware-host-modules-?"${PV}-k${MY_VMWARE_VERSION}" "${WORKDIR}/vmware-host-modules-${PV}-k${MY_VMWARE_VERSION}" || die
-# }
-
 pkg_setup() {
 	CONFIG_CHECK="~HIGH_RES_TIMERS"
 	if kernel_is -ge 5 5; then
