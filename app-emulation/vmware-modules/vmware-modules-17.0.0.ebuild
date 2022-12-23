@@ -3,36 +3,32 @@
 
 EAPI=7
 
-inherit flag-o-matic linux-info linux-mod user udev
+inherit flag-o-matic linux-info linux-mod udev
 
 DESCRIPTION="VMware kernel modules"
 HOMEPAGE="https://github.com/mkubecek/vmware-host-modules"
 
-# Highest kernel version known to work:
-MY_KERNEL_VERSION="6.0"
-
-# Upstream doesn't want to tag versions or anything that looks like properly
-# releasing the software, so we need to just pick a commit from
-# https://github.com/mkubecek/vmware-host-modules/commits/workstation-${PV}
-# and test it ourselves.
-#
-# Details: https://github.com/mkubecek/vmware-host-modules/issues/158#issuecomment-1228341760
-MY_COMMIT="33f1d0e6510328d00fa1d5470326a263b4a4f4b8"
-
-SRC_URI="https://github.com/mkubecek/vmware-host-modules/archive/${MY_COMMIT}.tar.gz -> ${P}-${MY_COMMIT}.tar.gz"
+# https://github.com/mkubecek/vmware-host-modules/archive/refs/tags/w17.0.0.tar.gz
+MY_KERNEL_VERSION="5.15"
+# SRC_URI="workstation? ( https://github.com/mkubecek/vmware-host-modules/archive/refs/tags/w${PV}${MY_KERNEL_VERSION}.tar.gz -> ${P}-w-${MY_KERNEL_VERSION}.tar.gz )
+SRC_URI="workstation? ( https://github.com/mkubecek/vmware-host-modules/archive/refs/tags/w17.0.0.tar.gz -> ${P}-w-${MY_KERNEL_VERSION}.tar.gz )
+	player? ( https://github.com/mkubecek/vmware-host-modules/archive//refs/tags/p${PV}${MY_KERNEL_VERSION}.tar.gz -> ${P}-p-${MY_KERNEL_VERSION}.tar.gz )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
-
-RDEPEND=""
+IUSE="+workstation player"
+REQUIRED_USE="^^ ( workstation player )"
+RDEPEND="acct-group/vmware"
 DEPEND=""
-
+PDEPEND=""
 RESTRICT="mirror"
+S="${WORKDIR}/vmware-host-modules-${PV}-k${MY_KERNEL_VERSION}"
 
-S="${WORKDIR}/vmware-host-modules-${MY_COMMIT}"
-
+src_unpack() {
+	default
+	mv "${WORKDIR}"/vmware-host-modules-?"${PV}-k${MY_KERNEL_VERSION}" "${WORKDIR}/vmware-host-modules-${PV}-k${MY_KERNEL_VERSION}" || die
+}
 pkg_setup() {
 	CONFIG_CHECK="~HIGH_RES_TIMERS"
 	if kernel_is -ge 5 5; then
@@ -46,21 +42,23 @@ pkg_setup() {
 	linux-info_pkg_setup
 	linux-mod_pkg_setup
 
-	if kernel_is gt ${MY_KERNEL_VERSION//./ }; then
-		ewarn
-		ewarn "Warning: this version of the modules is only known to work with kernels up to ${MY_KERNEL_VERSION}, while you are building them for a ${KV_FULL} kernel."
-		ewarn
+	if linux_chkconfig_present CC_IS_CLANG; then
+		ewarn "Warning: building ${PN} with a clang-built kernel is experimental"
+		BUILD_PARAMS+=' CC=${CHOST}-clang'
+		if linux_chkconfig_present LD_IS_LLD; then
+			BUILD_PARAMS+=' LD=ld.lld'
+			if linux_chkconfig_present LTO_CLANG_THIN; then
+				# kernel enables cache by default leading to sandbox violations
+				BUILD_PARAMS+=' ldflags-y=--thinlto-cache-dir= LDFLAGS_MODULE=--thinlto-cache-dir='
+			fi
+		fi
 	fi
-
-	VMWARE_GROUP=${VMWARE_GROUP:-vmware}
 
 	VMWARE_MODULE_LIST="vmmon vmnet"
 
 	VMWARE_MOD_DIR="${PN}-${PVR}"
 
 	BUILD_TARGETS="auto-build KERNEL_DIR=${KERNEL_DIR} KBUILD_OUTPUT=${KV_OUT_DIR}"
-
-	enewgroup "${VMWARE_GROUP}"
 
 	filter-flags -mfpmath=sse -mavx -mpclmul -maes
 	append-cflags -mno-sse # Found a problem similar to bug #492964
@@ -111,11 +109,5 @@ src_install() {
 
 pkg_postinst() {
 	linux-mod_pkg_postinst
-	udev_reload
 	ewarn "Don't forget to run '/etc/init.d/vmware restart' to use the new kernel modules."
-}
-
-pkg_postrm() {
-	linux-mod_pkg_postrm
-	udev_reload
 }
