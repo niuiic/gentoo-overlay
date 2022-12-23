@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/mkubecek/vmware-host-modules"
 MY_KERNEL_VERSION="5.15"
 # SRC_URI="workstation? ( https://github.com/mkubecek/vmware-host-modules/archive/refs/tags/w${PV}${MY_KERNEL_VERSION}.tar.gz -> ${P}-w-${MY_KERNEL_VERSION}.tar.gz )
 SRC_URI="workstation? ( https://github.com/mkubecek/vmware-host-modules/archive/refs/tags/w17.0.0.tar.gz -> ${P}-w-${MY_KERNEL_VERSION}.tar.gz )
-	player? ( https://github.com/mkubecek/vmware-host-modules/archive//refs/tags/p${PV}${MY_KERNEL_VERSION}.tar.gz -> ${P}-p-${MY_KERNEL_VERSION}.tar.gz )"
+	player? ( https://github.com/mkubecek/vmware-host-modules/archive/refs/tags/p17.0.0.tar.gz -> ${P}-p-${MY_KERNEL_VERSION}.tar.gz )"
 
 LICENSE="GPL-2"
 SLOT="0"
