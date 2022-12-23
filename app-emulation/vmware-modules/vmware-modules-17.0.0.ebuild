@@ -8,27 +8,22 @@ inherit flag-o-matic linux-info linux-mod udev
 DESCRIPTION="VMware kernel modules"
 HOMEPAGE="https://github.com/mkubecek/vmware-host-modules"
 
-# https://github.com/mkubecek/vmware-host-modules/archive/refs/tags/w17.0.0.tar.gz
-MY_KERNEL_VERSION="5.15"
-# SRC_URI="workstation? ( https://github.com/mkubecek/vmware-host-modules/archive/refs/tags/w${PV}${MY_KERNEL_VERSION}.tar.gz -> ${P}-w-${MY_KERNEL_VERSION}.tar.gz )
-SRC_URI="workstation? ( https://github.com/mkubecek/vmware-host-modules/archive/refs/tags/w17.0.0.tar.gz -> ${P}-w-${MY_KERNEL_VERSION}.tar.gz )
-	player? ( https://github.com/mkubecek/vmware-host-modules/archive/refs/tags/p17.0.0.tar.gz -> ${P}-p-${MY_KERNEL_VERSION}.tar.gz )"
+SRC_URI="https://github.com/mkubecek/vmware-host-modules/archive/refs/tags/w${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+workstation player"
-REQUIRED_USE="^^ ( workstation player )"
 RDEPEND="acct-group/vmware"
 DEPEND=""
 PDEPEND=""
 RESTRICT="mirror"
-S="${WORKDIR}/vmware-host-modules-${PV}-k${MY_KERNEL_VERSION}"
+S="${WORKDIR}/vmware-host-modules-w${PV}"
 
-src_unpack() {
-	default
-	mv "${WORKDIR}"/vmware-host-modules-?"${PV}-k${MY_KERNEL_VERSION}" "${WORKDIR}/vmware-host-modules-${PV}-k${MY_KERNEL_VERSION}" || die
-}
+# src_unpack() {
+# 	default
+# 	mv "${WORKDIR}"/vmware-host-modules-?"${PV}-k${MY_VMWARE_VERSION}" "${WORKDIR}/vmware-host-modules-${PV}-k${MY_VMWARE_VERSION}" || die
+# }
+
 pkg_setup() {
 	CONFIG_CHECK="~HIGH_RES_TIMERS"
 	if kernel_is -ge 5 5; then
