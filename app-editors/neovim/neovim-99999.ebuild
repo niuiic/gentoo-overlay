@@ -11,10 +11,12 @@ inherit cmake lua-single optfeature xdg
 DESCRIPTION="Vim-fork focused on extensibility and agility"
 HOMEPAGE="https://neovim.io"
 
-SRC_URI="https://github.com/neovim/neovim/archive/refs/tags/nightly.tar.gz -> ${P}.tar.gz"
+V="nightly"
+
+SRC_URI="https://github.com/neovim/neovim/archive/refs/tags/${V}.tar.gz"
 KEYWORDS="~amd64"
 
-S="${WORKDIR}/neovim-nightly"
+S="${WORKDIR}/neovim-${V}"
 
 LICENSE="Apache-2.0 vim"
 SLOT="0"
