@@ -19,7 +19,7 @@ BDEPEND="
 
 S="$WORKDIR/verible-$VERSION"
 
-src_install() {
+src_configure() {
 	export JAVA_HOME=$(java-config --jdk-home)
 	bazel run -c opt :install -- -s /usr/local/bin
 }
