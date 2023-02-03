@@ -18,10 +18,25 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 BDEPEND="
-    dev-util/bazel
+    >=dev-util/bazel-4.2.2
 "
 
 src_configure() {
-	export JAVA_HOME=$(java-config --jdk-home)
-	bazel run -c opt :install -- -s /usr/local/bin
+	bazel build -c opt //...
+}
+
+TOOLS="${S}/bazel-bin/verilog/tools"
+
+src_install() {
+	exeinto /usr/local/bin
+	doexe "${TOOLS}/diff/verible-verilog-diff"
+	doexe "${TOOLS}/formatter/verible-verilog-format"
+	doexe "${TOOLS}/lint/verible-verilog-lint"
+	doexe "${TOOLS}/kythe/verible-verilog-kythe-extractor"
+	doexe "${TOOLS}/kythe/verible-verilog-kythe-kzip-writer"
+	doexe "${TOOLS}/ls/verible-verilog-ls"
+	doexe "${TOOLS}/obfuscator/verible-verilog-obfuscate"
+	doexe "${TOOLS}/preprocessor/verible-verilog-preprocessor"
+	doexe "${TOOLS}/project/verible-verilog-project"
+	doexe "${TOOLS}/syntax/verible-verilog-syntax"
 }
