@@ -9,7 +9,7 @@ HOMEPAGE="https://github.com/patriciogonzalezvivo/glslViewer"
 inherit git-r3
 EGIT_CLONE_TYPE=shallow
 EGIT_REPO_URI="https://github.com/patriciogonzalezvivo/glslViewer"
-EGIT_COMMIT="${PV}"
+EGIT_COMMIT="v${PV}"
 EGIT_SUBMODULES=("*")
 
 LICENSE="BSD3"

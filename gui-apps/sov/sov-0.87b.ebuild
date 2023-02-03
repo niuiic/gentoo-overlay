@@ -23,6 +23,7 @@ DEPEND="
 	media-libs/freetype
 	dev-libs/wayland-protocols
 	dev-util/meson
+    media-libs/glew
 "
 
 src_configure() {

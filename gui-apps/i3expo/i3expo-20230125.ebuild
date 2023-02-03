@@ -9,7 +9,7 @@ KEYWORDS="~amd64"
 
 inherit git-r3
 EGIT_REPO_URI="https://github.com/morrolinux/i3expo-ng"
-EGIT_COMMIT="b55a74bf367475db5b9e21213ced684b50607fe2"
+EGIT_COMMIT="2c273b0ec8d9d0b75dca80744574bffeb9330a28"
 
 LICENSE="MIT"
 SLOT="0"
