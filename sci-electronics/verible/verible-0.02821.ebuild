@@ -22,6 +22,7 @@ BDEPEND="
 "
 
 src_configure() {
+	export JAVA_HOME=$(java-config --jdk-home)
 	bazel build -c opt //...
 }
 
