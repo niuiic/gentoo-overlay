@@ -7,7 +7,11 @@ VERSION="0.0-2821-gb2180bfa"
 
 DESCRIPTION="A suite of SystemVerilog developer tools, including a parser, style-linter, and formatter."
 HOMEPAGE="https://github.com/chipsalliance/verible"
-SRC_URI="https://github.com/chipsalliance/verible/archive/refs/tags/v$VERSION.tar.gz"
+
+inherit git-r3
+EGIT_CLONE_TYPE=shallow
+EGIT_REPO_URI="https://github.com/chipsalliance/verible"
+EGIT_COMMIT="v${VERSION}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,9 +21,7 @@ BDEPEND="
     dev-util/bazel
 "
 
-S="$WORKDIR/verible-$VERSION"
-
-src_install() {
+src_configure() {
 	export JAVA_HOME=$(java-config --jdk-home)
 	bazel run -c opt :install -- -s /usr/local/bin
 }
