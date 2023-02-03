@@ -3,19 +3,23 @@
 
 EAPI=8
 
-VERSION="v0.0-2821-gb2180bfa"
+VERSION="0.0-2821-gb2180bfa"
 
 DESCRIPTION="A suite of SystemVerilog developer tools, including a parser, style-linter, and formatter."
 HOMEPAGE="https://github.com/chipsalliance/verible"
-SRC_URI="https://github.com/chipsalliance/verible/releases/download/$VERSION/verible-$VERSION-Ubuntu-22.04-jammy-x86_64.tar.gz"
+SRC_URI="https://github.com/chipsalliance/verible/archive/refs/tags/v$VERSION.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 
+BDEPEND="
+    dev-util/bazel
+"
+
 S="$WORKDIR/verible-$VERSION"
 
 src_install() {
-	exeinto /usr/bin
-	doexe bin/*
+	export JAVA_HOME=$(java-config --jdk-home)
+	bazel run -c opt :install -- -s /usr/local/bin
 }
