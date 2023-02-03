@@ -21,5 +21,6 @@ S="$WORKDIR/verible-$VERSION"
 
 src_configure() {
 	export JAVA_HOME=$(java-config --jdk-home)
-	bazel run -c opt :install -- -s /usr/local/bin
+    bazel build -c opt //...
+	# bazel run -c opt :install -- -s /usr/local/bin
 }
