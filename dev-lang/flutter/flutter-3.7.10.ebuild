@@ -17,11 +17,8 @@ S="${WORKDIR}/${PN}"
 src_install() {
 	mkdir "${ED}/opt" || die
 	rm -rf "${S}/.git" || die
-	rm -rf "${S}/flutter.bat" || die
+	rm -rf "${S}/*.bat" || die
 	mv "${S}" "${ED}/opt/" || die
-	USER=$(who)
-	USER=$(echo $USER | grep -o '^\w*')
-	chown -R "$USER:$USER" "${ED}/opt/${PN}" || die
 
 	for i in "${ED}/opt/${PN}/bin"/flutter*; do
 		dosym "../${PN}/bin/${i##*/}" "/opt/bin/${i##*/}"
