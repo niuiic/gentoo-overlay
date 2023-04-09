@@ -14,6 +14,8 @@ check "https://github.com/rofl0r/proxychains-ng/releases" proxychains
 check "https://github.com/chipsalliance/verible/releases" verible-bin
 check "https://github.com/keshavbhatt/ColorPicker/releases" color-picker
 check "https://github.com/patriciogonzalezvivo/glslViewer/releases" glslviewer
+check "https://dart.dev/get-dart/archive" dart-sdk
+check "https://docs.flutter.dev/release/archive?tab=linux" flutter
 
 # i3expo and its dependency packages
 check "https://github.com/morrolinux/i3expo-ng" i3expo
