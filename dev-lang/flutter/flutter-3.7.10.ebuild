@@ -17,7 +17,7 @@ BDEPEND="app-arch/unzip"
 S="${WORKDIR}/${PN}"
 
 src_install() {
-	rm -rf "${S}/.git"
+	rm -rf "${S}/.git*"
 	mkdir "${ED}/opt" || die
 	mv "${S}" "${ED}/opt/" || die
 	# chown -R $(whoami):$(whoami) "${ED}/opt/${S}"
