@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="A client-optimized langauge for fast apps on any platform"
+DESCRIPTION="A client-optimized language for fast apps on any platform"
 HOMEPAGE="https://dart.dev/"
 
 BASE_URI="https://storage.googleapis.com/dart-archive/channels/stable/release/${PV}/sdk"
@@ -30,12 +30,10 @@ src_prepare() {
 }
 
 src_install() {
-	rm bin/dart || die
-
 	mkdir "${ED}/opt" || die
 	mv "${S}" "${ED}/opt/" || die
 
-	for i in "${ED}/opt/${MY_PN}/bin"/dart*; do
-		dosym "../${MY_PN}/bin/${i##*/}" "/opt/bin/${i##*/}"
+	for i in "${ED}/opt/${PN}/bin"/dart*; do
+		dosym "../${PN}/bin/${i##*/}" "/opt/bin/${i##*/}"
 	done
 }
