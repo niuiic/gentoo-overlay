@@ -12,14 +12,13 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
-BDEPEND="app-arch/unzip"
-
 S="${WORKDIR}/${PN}"
 
 src_install() {
 	mkdir "${ED}/opt" || die
 	mv "${S}" "${ED}/opt/" || die
-	rm -rf "${ED}/opt/${S}/.git*"
+	rm -rf "${ED}/opt/${PN}/.git*"
+	chown "$(whoami):$(whoami)" "${ED}/opt/${PN}"
 
 	for i in "${ED}/opt/${PN}/bin"/flutter*; do
 		dosym "../${PN}/bin/${i##*/}" "/opt/bin/${i##*/}"
