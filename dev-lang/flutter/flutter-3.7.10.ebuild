@@ -19,7 +19,7 @@ S="${WORKDIR}/${PN}"
 src_install() {
 	mkdir "${ED}/opt" || die
 	mv "${S}" "${ED}/opt/" || die
-	chown -R $USER:$USER "${ED}/opt/${S}"
+	# chown -R $(whoami):$(whoami) "${ED}/opt/${S}"
 
 	for i in "${ED}/opt/${PN}/bin"/flutter*; do
 		dosym "../${PN}/bin/${i##*/}" "/opt/bin/${i##*/}"
