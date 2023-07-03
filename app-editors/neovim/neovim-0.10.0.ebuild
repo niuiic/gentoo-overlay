@@ -64,11 +64,6 @@ BDEPEND+="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-0.9.0-cmake_lua_version.patch"
-	"${FILESDIR}/${PN}-0.9.1-cmake-darwin.patch"
-)
-
 src_prepare() {
 	# Use our system vim dir
 	sed -e "/^# define SYS_VIMRC_FILE/s|\$VIM|${EPREFIX}/etc/vim|" \
@@ -96,10 +91,6 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-
-	# install a default configuration file
-	insinto /etc/vim
-	doins "${FILESDIR}"/sysinit.vim
 
 	# conditionally install a symlink for nvimpager
 	if use nvimpager; then
