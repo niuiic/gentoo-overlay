@@ -21,6 +21,7 @@ src_unpack() {
 }
 
 src_install() {
-	chmod +x pnpm
+	echo 'make:\n\tchmod +x pnpm' >makefile
+    make
 	dobin pnpm
 }
