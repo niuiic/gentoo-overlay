@@ -10,6 +10,13 @@ SRC_URI="https://github.com/pnpm/pnpm/releases/download/v${PV}/pnpm-linux-x64 ->
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE=""
+
+RESTRICT="mirror"
+
+DEPEND=""
+RDEPEND=""
+BDEPEND=""
 
 S="${WORKDIR}"
 
