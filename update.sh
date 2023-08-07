@@ -17,7 +17,6 @@ check "https://github.com/patriciogonzalezvivo/glslViewer/releases" glslviewer
 check "https://dart.dev/get-dart/archive" dart-sdk
 check "https://docs.flutter.dev/release/archive?tab=linux" flutter
 check "https://github.com/containers/podman-tui/releases" podman-tui
-check "https://github.com/pnpm/pnpm/releases" pnpm
 
 # i3expo and its dependency packages
 check "https://github.com/morrolinux/i3expo-ng" i3expo
