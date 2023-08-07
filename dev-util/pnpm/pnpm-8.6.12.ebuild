@@ -21,5 +21,6 @@ src_unpack() {
 }
 
 src_install() {
+	chmod +x pnpm
 	dobin pnpm
 }
