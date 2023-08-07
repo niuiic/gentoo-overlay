@@ -4,24 +4,26 @@
 EAPI=8
 
 DESCRIPTION="Fast, disk space efficient package manager"
-HOMEPAGE="https://pnpm.io"
-
-SRC_URI="https://github.com/pnpm/pnpm/releases/download/v${PV}/pnpm-linux-x64 -> ${PN}"
+HOMEPAGE="https://github.com/pnpm/pnpm"
+SRC_URI="https://github.com/pnpm/pnpm/releases/download/v${PV}/pnpm-linux-x64 -> pnpm-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
+IUSE=""
 
-DEPEND="net-libs/nodejs"
+RESTRICT="mirror"
 
-S="${PORTAGE_TMPDIR}/portage/${CATEGORY}/${PF}/distdir"
+DEPEND=""
+RDEPEND=""
+BDEPEND=""
 
-src_unpack() {
-	true
-}
+S="${WORKDIR}"
+
+QA_PREBUILT="*"
 
 src_install() {
-	echo 'make:\n\tchmod +x pnpm' >makefile
-    make
-	dobin pnpm
+	mkdir -p "${D}/usr/bin" || die
+	cp "${DISTDIR}/pnpm-${PV}" "${D}/usr/bin/pnpm" || die
+	chmod 755 "${D}/usr/bin/pnpm" || die
 }
