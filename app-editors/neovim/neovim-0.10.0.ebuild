@@ -75,6 +75,7 @@ src_prepare() {
 }
 
 src_configure() {
+	ln -s "${BROOT}"/usr/bin/luajit "${BUILD_DIR}"/luajit || die
 	# Upstream default to LTO on non-debug builds
 	# Let's expose it as a USE flag because upstream
 	# have preferences for how we should use LTO
@@ -91,6 +92,10 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
+
+	# install a default configuration file
+	insinto /etc/vim
+	doins "${FILESDIR}"/sysinit.vim
 
 	# conditionally install a symlink for nvimpager
 	if use nvimpager; then
