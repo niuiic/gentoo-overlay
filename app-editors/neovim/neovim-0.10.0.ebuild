@@ -93,10 +93,6 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	# install a default configuration file
-	insinto /etc/vim
-	doins "${FILESDIR}"/sysinit.vim
-
 	# conditionally install a symlink for nvimpager
 	if use nvimpager; then
 		dosym ../share/nvim/runtime/macros/less.sh /usr/bin/nvimpager
