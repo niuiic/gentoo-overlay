@@ -13,7 +13,7 @@ HOMEPAGE="https://neovim.io"
 
 inherit git-r3
 EGIT_REPO_URI="https://github.com/neovim/neovim.git"
-EGIT_COMMIT="nightly"
+EGIT_COMMIT="stable"
 
 LICENSE="Apache-2.0 vim"
 SLOT="0"
