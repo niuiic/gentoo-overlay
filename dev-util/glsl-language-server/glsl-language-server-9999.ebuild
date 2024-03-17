@@ -13,7 +13,6 @@ EGIT_SUBMODULES=("*")
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
 
 src_install() {
 	DESTDIR="${D}" ninja -C"${S}"/build install
