@@ -11,7 +11,6 @@ EGIT_REPO_URI="https://github.com/rofl0r/proxychains-ng"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
 
 src_prepare() {
 	default
