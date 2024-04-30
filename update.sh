@@ -10,4 +10,3 @@ echo -e "check https://devmanual.gentoo.org/quickstart/index.html for tips to wr
 
 check "https://github.com/rofl0r/proxychains-ng/releases" proxychains
 check "https://github.com/patriciogonzalezvivo/glslViewer/releases" glslviewer
-check "https://github.com/svenstaro/glsl-language-server/releases" glsl-language-server
