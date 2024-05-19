@@ -11,3 +11,4 @@ echo -e "check https://devmanual.gentoo.org/quickstart/index.html for tips to wr
 check "https://github.com/rofl0r/proxychains-ng/releases" proxychains
 check "https://github.com/patriciogonzalezvivo/glslViewer/releases" glslviewer
 check "https://github.com/jgraph/drawio-desktop/releases" drawio-desktop-bin
+check "https://docs.flutter.dev/get-started/install/linux/android?tab=download#download-then-install-flutter" flutter
