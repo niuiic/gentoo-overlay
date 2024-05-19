@@ -17,10 +17,8 @@ S="${WORKDIR}/${PN}"
 src_install() {
 	mv .github .git || die
 	rm -rf examples || die
-	rm -rf bin/*.bat || die
-	mkdir /opt/flutter || die
-	mv "${S}" /opt/flutter || die
-	chmod 755 -R /opt/flutter || die
+	mkdir "${ED}/opt" || die
+	mv "${S}" "${ED}/opt/" || die
 
 	for i in "${ED}/opt/${PN}/bin"/flutter*; do
 		dosym "../${PN}/bin/${i##*/}" "/opt/bin/${i##*/}"
