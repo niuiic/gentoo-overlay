@@ -15,10 +15,11 @@ KEYWORDS="amd64"
 S="${WORKDIR}/${PN}"
 
 src_install() {
-	mkdir "${ED}/opt" || die
-	rm -rf "${S}/.git" || die
-	rm -rf "${S}/*.bat" || die
-	mv "${S}" "${ED}/opt/" || die
+	mv .github .git
+	rm -rf "${S}/**/*.bat"
+	rm -rf examples
+	mkdir "${ED}/opt"
+	mv "${S}" "${ED}/opt/"
 
 	for i in "${ED}/opt/${PN}/bin"/flutter*; do
 		dosym "../${PN}/bin/${i##*/}" "/opt/bin/${i##*/}"
