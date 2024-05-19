@@ -19,7 +19,7 @@ src_install() {
 	rm -rf examples || die
 	mkdir "${ED}/opt" || die
 	mv "${S}" "${ED}/opt/" || die
-	chmod -R 755 "${ED}/opt/${PN}" || die
+	chown -R niuiic:niuiic "${ED}/opt/${PN}" || die
 
 	for i in "${ED}/opt/${PN}/bin"/flutter*; do
 		dosym "../${PN}/bin/${i##*/}" "/opt/bin/${i##*/}"
