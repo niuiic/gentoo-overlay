@@ -24,4 +24,7 @@ src_install() {
 	for i in "${ED}/opt/${PN}/bin"/flutter*; do
 		dosym "../${PN}/bin/${i##*/}" "/opt/bin/${i##*/}"
 	done
+	for i in "${ED}/opt/${PN}/bin"/dart*; do
+		dosym "../${PN}/bin/${i##*/}" "/opt/bin/${i##*/}"
+	done
 }
