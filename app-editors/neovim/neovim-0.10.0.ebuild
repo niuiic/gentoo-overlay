@@ -5,7 +5,7 @@ EAPI=8
 
 # RelWithDebInfo sets -Og -g
 CMAKE_BUILD_TYPE=Release
-LUA_COMPAT=( lua5-{1..2} luajit )
+LUA_COMPAT=(lua5-{1..2} luajit)
 inherit cmake lua-single optfeature xdg
 
 DESCRIPTION="Vim-fork focused on extensibility and agility"
@@ -89,15 +89,6 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-
-	# install a default configuration file
-	insinto /etc/vim
-	newins "${FILESDIR}"/sysinit.vim-r1 sysinit.vim
-
-	# conditionally install a symlink for nvimpager
-	if use nvimpager; then
-		dosym ../share/nvim/runtime/macros/less.sh /usr/bin/nvimpager
-	fi
 }
 
 pkg_postinst() {
