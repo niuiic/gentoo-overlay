@@ -21,10 +21,10 @@ src_install() {
 	mv "${S}" "${ED}/opt/" || die
 	chown -R niuiic:niuiic "${ED}/opt/${PN}" || die
 
-	for i in "${ED}/opt/${PN}/bin"/flutter*; do
+	for i in "${ED}/opt/${PN}/bin"/flutter; do
 		dosym "../${PN}/bin/${i##*/}" "/opt/bin/${i##*/}"
 	done
-	for i in "${ED}/opt/${PN}/bin"/dart*; do
+	for i in "${ED}/opt/${PN}/bin"/dart; do
 		dosym "../${PN}/bin/${i##*/}" "/opt/bin/${i##*/}"
 	done
 }
