@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,12 +9,10 @@ HOMEPAGE="https://github.com/patriciogonzalezvivo/glslViewer"
 inherit git-r3
 EGIT_CLONE_TYPE=shallow
 EGIT_REPO_URI="https://github.com/patriciogonzalezvivo/glslViewer"
-EGIT_COMMIT="v${PV}"
 EGIT_SUBMODULES=("*")
 
 LICENSE="BSD3"
 SLOT="0"
-KEYWORDS="~amd64"
 
 DEPEND="
 	sys-libs/ncurses
